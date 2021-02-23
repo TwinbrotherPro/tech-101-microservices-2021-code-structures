@@ -1,5 +1,9 @@
 package com.example.demo.external.routes;
 
+import com.example.demo.core.applicationServices.RfidCardService;
+import com.example.demo.core.domainEntities.RfidCard;
+import com.example.demo.core.domainServices.IRfidCardRepository;
+import com.example.demo.external.database.RfidCardRepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,5 +26,12 @@ public class DemoApplication {
 		return String.format("Hello %s!", name);
 	}
 
+	@PostMapping("cards/{id}/activate")
+	public String activateCard(@PathVariable String id) {
+		IRfidCardRepository cardRepo = new RfidCardRepository();
+		RfidCardService cardService = new RfidCardService(cardRepo);
+		RfidCard card = cardService.activateRfidCard(id);
+		return "Activated card:" + card.getId();
+	}
 
 }
