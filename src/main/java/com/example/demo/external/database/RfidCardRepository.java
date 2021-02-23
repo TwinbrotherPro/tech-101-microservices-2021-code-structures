@@ -6,7 +6,9 @@ import com.example.demo.core.domainServices.IRfidCardRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RfidCardRepository implements IRfidCardRepository {
 
     Logger logger = LoggerFactory.getLogger(RfidCardRepository.class);
@@ -19,7 +21,7 @@ public class RfidCardRepository implements IRfidCardRepository {
     @Override
     public void saveRfidCard(RfidCard card) {
 
-        System.out.println("Storing Card %c" + card.getId() + " in database");
+        logger.info("Storing Card " + card.getId() + " in database");
     }
 
 }
