@@ -19,7 +19,7 @@ public class RfidCardRepository implements IRfidCardRepository {
     @Override
     public void saveRfidCard(RfidCard card) {
 
-        System.out.println("Storing Card %c" + card.getId() + " in database");
+       logger.info("Storing Card " + card.getId() + " in database");
     }
 
 }
